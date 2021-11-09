@@ -1,0 +1,75 @@
+import random
+import imageio
+import matplotlib.pyplot as plt
+r2x = 0
+r2y = 0
+r3x = 0
+r3y = 0
+r4x = 0
+r4y = 0
+rep=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,40,80,120,160,200,300,400,600,800,1200,1600,2000]
+##Rule 1
+images = []
+fig,ax =plt.subplots()
+ax.set_xlim([-0.5,0.5])
+ax.set_ylim([-0.5,0.5])
+for i in range(0,2000):
+        d1x=random.gauss(0,0.01)
+        d1y=random.gauss(0,0.01)
+        ax.scatter(d1x, d1y, c='#1f77b4', s=15)
+        ax.scatter(0,0, c='r', s=20)
+        if i in rep:
+            plt.savefig('DFE/Rule 1/rule1-{}'.format(i))
+            images.append(imageio.imread('DFE/Rule 1/rule1-{}.png'.format(i)))
+imageio.mimsave('DFE/Rule 1/rule1.gif', images)
+##Rule 2
+images = []
+fig,ax =plt.subplots()
+ax.set_xlim([-0.5,0.5])
+ax.set_ylim([-0.5,0.5])
+for i in range(0,2000):
+        d2x=random.gauss(r2x,0.01)
+        d2y=random.gauss(r2y,0.01)
+        ax.scatter(d2x, d2y, c='#1f77b4', s=15)
+        temp=ax.scatter(r2x, r2y, c='r', s=20)
+        r2x=r2x-d2x
+        r2y=r2y-d2y
+        if i in rep:
+                plt.savefig('DFE/Rule 2/rule2-{}'.format(i))
+                images.append(imageio.imread('DFE/Rule 2/rule2-{}.png'.format(i)))
+        temp.remove()
+imageio.mimsave('DFE/Rule 2/rule2.gif', images)
+##Rule 3
+images = []
+fig,ax =plt.subplots()
+ax.set_xlim([-0.5,0.5])
+ax.set_ylim([-0.5,0.5])
+for i in range(0,2000):
+        d3x = random.gauss(r3x, 0.01)
+        d3y = random.gauss(r3y, 0.01)
+        ax.scatter(d3x, d3y, c='#1f77b4', s=15)
+        temp=ax.scatter(r3x, r3y, c='r', s=20)
+        r3x = -d3x
+        r3y = -d3y
+        if i in rep:
+                plt.savefig('DFE/Rule 3/rule3-{}'.format(i))
+                images.append(imageio.imread('DFE/Rule 3/rule3-{}.png'.format(i)))
+        temp.remove()
+imageio.mimsave('DFE/Rule 3/rule3.gif', images)
+##Rule 4
+images = []
+fig, ax = plt.subplots()
+ax.set_xlim([-0.5,0.5])
+ax.set_ylim([-0.5,0.5])
+for i in range(0, 2000):
+        d4x = random.gauss(r4x, 0.01)
+        d4y = random.gauss(r4y, 0.01)
+        ax.scatter(d4x, d4y, c='#1f77b4', s=15)
+        temp=ax.scatter(r4x, r4y, c='r', s=20)
+        r4x = d4x
+        r4y = d4y
+        if i in rep:
+                plt.savefig('DFE/Rule 4/rule4-{}'.format(i))
+                images.append(imageio.imread('DFE/Rule 4/rule4-{}.png'.format(i)))
+        temp.remove()
+imageio.mimsave('DFE/Rule 4/rule4.gif', images)
